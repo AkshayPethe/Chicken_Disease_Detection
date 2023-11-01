@@ -5,7 +5,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s:')
 #asctime is the current time for logging
 
-project_name = "Chicken Disease Classification"
+project_name = "Chicken_Disease_Classification"
 
 list_of_files = [
     ".github/workflows/.gitkeeep",
@@ -23,6 +23,7 @@ list_of_files = [
     "requirements.txt",
     "setup.py",
     "research/trials.ipynb",
+    "templates/index.html"
     
 
 
