@@ -1,6 +1,7 @@
 from Chicken_Disease_Classification.constants import *
 from Chicken_Disease_Classification.utils.common import read_yaml, create_directories
-from Chicken_Disease_Classification.entity.config_entity import DataIngestionConfig
+from Chicken_Disease_Classification.entity.config_entity import DataIngestionConfig,PrepareBaseConfig
+
 
 #Making the Configuration manager to create a path by calling fn from common.py
 class ConfigurationManager:
@@ -29,5 +30,22 @@ class ConfigurationManager:
             unzip_dir=config.unzip_dir
         )
         return data_ingestion_config
+    
+
+     def get_prepare_base_model_config(self) -> PrepareBaseConfig:
+        config = self.config.prepare_base_model
+
+        create_directories([self.config.artifacts_root])
+
+        prepare_base_model_config = PrepareBaseConfig(
+                root_dir = Path(config.root_dir),
+                base_model_path = Path(config.base_model_path),
+                updated_model_path = Path(config.updated_model_path),
+                params_image_size = self.params.IMAGE_SIZE,
+                params_learning_rate = self.params.LEARNING_RATE,
+                params_include_top = self.params.INCLUDE_TOP,
+                params_weights = self.params.WEIGHTS,
+                params_classes = self.params.CLASSES
+    
         
       
